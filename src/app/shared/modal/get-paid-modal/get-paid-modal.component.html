@@ -1,0 +1,43 @@
+<div id="get-paid-modal">
+    <div  class="wrapper">
+        <div class="title">
+            <h3>Get paid via Paypal</h3>
+            <i class="fa fa-close close-btn" (click)="close()"></i>
+        </div>
+
+        <!--<div class="options">-->
+            <!--<div class="item" *ngFor="let item of setting.paymentOptions; let i = index" [ngClass]="{selected: item.name == setting.selectedPayment.name}" (click)="selectItem(i)">-->
+                <!--<img [src]="'assets/images/' + item.name + '.png'">-->
+                <!--<label>{{item.description}}</label>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="email-wrapper">
+            <form [formGroup]="form">
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(form, 'email')">
+                    <label class="">Enter your paypal email</label>
+                    <input name="loginemail" [(ngModel)]="email" formControlName="email">
+                    <span class="error">invalid email</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="form">
+            <div class="row total">
+                <div class="col-6">
+                    <label>Total Amount: </label>
+                </div>
+
+                <div class="col-6">
+                    <label>${{total_amount}}</label>
+                </div>
+            </div>
+
+            <div class="btn-wrapper mt-1">
+                <mat-spinner *ngIf="loading" [diameter]="50" style="margin: auto;"></mat-spinner>
+                <button *ngIf="!loading" class="common-btn" (click)="confirm()">Get Paid now</button>
+            </div>
+        </div>
+
+    </div>
+</div>

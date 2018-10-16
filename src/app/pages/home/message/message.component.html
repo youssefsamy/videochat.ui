@@ -1,0 +1,50 @@
+<div id="page-message" fxFlexFill fxFlex>
+    <div fxFlexFill fxLayout="row">
+        <div fxFlex="30" class="friendlist">
+            <div class="friend" *ngFor="let item of setting.friendList; let i = index" (click)="selectFriend(i)"
+                 [ngClass]="{selected: i == selectedIndex}">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxFlex="20">
+                        <img class="avatar" [src]="'assets/images/profile.jpg'">
+                    </div>
+                    <div fxFlex="80">
+                        <label class="name d-block mb-0 font-weight-bold">{{item.name}}</label>
+                        <span class="email">{{item.email.substr(0, 15)}}</span>
+                    </div>
+
+                    <span class="badge badge-danger" *ngIf="item.badge != 0">{{item.badge}}</span>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="70" class="bg-white content">
+
+            <div fxFlexFill style="position: absolute">
+                <div class="message-content" *ngIf="selectedIndex != -1">
+                    <div>
+                        <div class="message" *ngFor="let message of messageList; let i = index"
+                             [ngClass]="{send: setting.loginInfo.email == message.from, received: setting.loginInfo.email != message.from}">
+                            <div class="message-inner">
+                                <p class="">{{message.message}}</p>
+                                <label class="time">{{message.created_at}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-wrapper" *ngIf="selectedIndex != -1">
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" name="message" [(ngModel)]="message" (keyup)="sendMessageByEnter($event)">
+                    </div>
+                    <div class="col-2 pl-0">
+                        <button (click)="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="placeholder" *ngIf="selectedIndex == -1" fxFlexFill fxLayoutAlign="center center">
+                <div>Welcome to Message</div>
+            </div>
+        </div>
+    </div>
+</div>

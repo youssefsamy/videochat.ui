@@ -1,0 +1,108 @@
+<div id="page-video-chat" fxFlexFill fxFlex>
+    <div class="welcome" *ngIf="status == 'unconnected'">
+        <ngx-carousel *ngIf="setting.getUserSetting('gender') == 'female'"
+                [inputs]="carouselOne" [ngClass]="{opacity: turnOn}">
+            <ngx-item NgxCarouselItem *ngFor="let item of maleSlideImages">
+                <img [src]="item.url" class="slide-image">
+            </ngx-item>
+            <button NgxCarouselPrev class='leftRs' style="display: none">&lt;</button>
+            <button NgxCarouselNext class='rightRs' style="display: none">&gt;</button>
+        </ngx-carousel>        <!-- slide for females -->
+
+        <ngx-carousel *ngIf="setting.getUserSetting('gender') != 'female'"
+                [inputs]="carouselOne" [ngClass]="{opacity: turnOn}">
+            <ngx-item NgxCarouselItem *ngFor="let item of femaleSlideImages">
+                <img [src]="item.url" class="slide-image">
+            </ngx-item>
+            <button NgxCarouselPrev class='leftRs' style="display: none">&lt;</button>
+            <button NgxCarouselNext class='rightRs' style="display: none">&gt;</button>
+        </ngx-carousel>            <!-- slide for males -->
+
+        <div class="mt-5 text-center turnon" *ngIf="!turnOn">
+            <h2 class="">Want to find someone to chat with?</h2>
+            <button class="turnBtn mt-3 common-btn" (click)="turnonWelcomeCamera()">Turn on camera</button>
+            <div class="note mt-2">
+                <span><i class="fa fa-video-camera mr-1"></i>Activate your camera to start searching</span>
+            </div>
+
+        </div>
+
+        <div class="startSearchWrapper" *ngIf="turnOn">
+            <i class="fa fa-arrow-left back" (click)="back()"></i>
+            <div class="videowrapper">
+                <video id="welcomeLocalVideo" autoplay></video>
+            </div>
+            <h2 class="mt-3">Find someone to chat with!</h2>
+            <button class="startSearhcBtn mt-3 common-btn" (click)="startSearch()">Start searching</button>
+        </div>
+
+    </div>
+
+    <div class="loading" *ngIf="status == 'finding'" fxLayout="column" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+        <h3 class="mt-5">finding new partner......</h3>
+        <button class="common-btn stop-btn" (click)="stopSearching()">Stop Searching</button>
+    </div>
+
+    <div class="chatWrapper" *ngIf="status == 'connected'">
+
+        <div class="progress-wrapper" *ngIf="enableNext">
+            <span class="title">Time remaining</span>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span class="time">{{60 - time}}S</span>
+        </div>
+
+
+        <div class="localVideoWrapper">
+            <video id="localVideo" autoplay></video>
+        </div>
+
+        <div id="subscriber"></div>
+        <div id="publisherContainer"></div>
+
+        <div class="main-wrapper">
+            <div class="action-wrapper">
+                <button (click)="endChat()">End Chat</button>
+                <button (click)="findNext()" [disabled]="!enableNext">Find Next</button>
+            </div>
+            <div class="message">
+                <div class="message-inner">
+                    <div *ngFor="let item of messages; let i = index"
+                         [ngClass]="{received: item.type == 'received', send: item.type == 'send'}"
+                         class="item-wrapper">
+                        <div class="item clearfix">
+                            <span class="float-left"><i class="sender">{{item.type == 'send' ? 'Me' : partner.name}}</i>: </span>
+                            <div class="float-left ml-2">
+                                <span>{{item.message}}</span>
+                                <br>
+                                <span *ngIf="item.type == 'received' && item.translate == true && item.original != item.message" class="original">{{item.original}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <div class="row">
+                    <div class="col-1 pr-0">
+                        <img src="assets/images/mob_language.png" (click)="selectLanguage()" class="lang_img">
+                    </div>
+                    <div class="col-8">
+                        <input type="text" name="message" [(ngModel)]="message" (keyup)="sendMessageByEnter($event)">
+                    </div>
+                    <div class="col-2 pl-0">
+                        <button (click)="sendMessage()">send</button>
+                    </div>
+                    <div class="col-1 pl-0">
+                        <button (click)="addFriend()" [disabled]="!setting.isLoggedIn || partner.email == 'unknown'">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+</div>
+

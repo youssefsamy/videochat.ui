@@ -1,0 +1,67 @@
+.wrapper {
+    min-height: 500px;
+
+    .title {
+        text-align: center;
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    .gender-wrapper {
+        .picture {
+            width: 130px;
+            height: 130px;
+            background-size: 100% 100%;
+            border-radius: 100%;
+
+
+            &.male-pic {
+                background-image: url('../../../../assets/images/gender/male.png');
+            }
+        }
+
+        .name {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .male {
+            margin-right: 80px;
+            .picture {
+                border: 2px solid #00aadc;
+                background-image: url('../../../../assets/images/gender/male.png');
+            }
+
+            &:hover {
+                cursor: pointer;
+                .picture {
+                    background-image: url('../../../../assets/images/gender/male-active.png');
+                }
+
+                .name {
+                    color: #00aadc;
+                }
+            }
+        }
+
+        .female {
+            .picture {
+                border: 2px solid #f6418b;
+                background-image: url('../../../../assets/images/gender/female.png');
+
+            }
+
+            &:hover {
+                cursor: pointer;
+                .picture {
+                    background-image: url('../../../../assets/images/gender/female-active.png');
+                }
+
+                .name {
+                    color: #f6418b;
+                }
+            }
+        }
+
+    }
+}

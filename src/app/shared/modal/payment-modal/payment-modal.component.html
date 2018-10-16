@@ -1,0 +1,82 @@
+<div id="payment-modal">
+    <div  class="wrapper">
+        <div class="title">
+            <h3>Buy minutes</h3>
+            <i class="fa fa-close close-btn" (click)="close()"></i>
+        </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-3">
+                    <div class="item first">
+                        <div class="item-title">
+                            <label class="mb-0">266 minutes free!</label><br>
+                            <label>VIP 50% discount</label>
+                        </div>
+
+                        <div class="item-content">
+                            <h3 class="mb-0">666</h3>
+                            <p>MINUTES</p>
+
+                            <button class="btn btn-primary" (click)="buy(666, 200)">BUY</button>
+                            <label class="price mt-2">$200</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="item second">
+                        <div class="item-title">
+                            <label class="mb-0">200 minutes free!</label><br>
+                            <label>VIP 40% discount</label>
+                        </div>
+
+                        <div class="item-content">
+                            <h3 class="mb-0">500</h3>
+                            <p>MINUTES</p>
+
+                            <button class="btn btn-primary" (click)="buy(500, 150)">BUY</button>
+                            <label class="price mt-2">$150</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="item third">
+                        <div class="item-title">
+                            <label class="mb-0">25 minutes free!</label><br>
+                            <label>VIP 20% discount</label>
+                        </div>
+
+                        <div class="item-content">
+                            <h3 class="mb-0">125</h3>
+                            <p>MINUTES</p>
+
+                            <button class="btn btn-primary" (click)="buy(125, 50)">BUY</button>
+                            <label class="price mt-2">$50</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="item fourth">
+                        <div class="item-title">
+                            <label class="mb-0">5 minutes free!</label><br>
+                            <label>Standard</label>
+                        </div>
+
+                        <div class="item-content">
+                            <h3 class="mb-0">55</h3>
+                            <p>MINUTES</p>
+
+                            <button class="btn btn-primary" (click)="buy(55, 25)">BUY</button>
+                            <label class="price mt-2">$25</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-method">
+                <p>Payment method: <span>Paypal payment<i class="fa fa-angle-down ml-1"></i></span></p>
+                <!--<p>Payment method: <span (click)="selectPaymentOption()">{{setting.selectedPayment['description']}}<i class="fa fa-angle-down ml-1"></i></span></p>-->
+            </div>
+        </div>
+    </div>
+</div>

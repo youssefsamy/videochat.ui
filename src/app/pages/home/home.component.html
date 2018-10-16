@@ -1,0 +1,31 @@
+<div class="page-layout" fxFlexFill>
+    <div class="main-container" fxLayout="column" >
+        <div class="top-nav">
+            <div class="clearfix">
+                <ul fxLayout="row" class="float-left">
+                    <li class="video" [ngClass]="{'active': page == 'videochat'}" (click)="page = 'videochat'"><a>Video Chat</a></li>
+                    <li class="message" [ngClass]="{'active': page == 'message'}" (click)="page = 'message'"><a>Messages</a></li>
+                </ul>
+                <div class="float-right sign-wrapper">
+                    <a class="signin font-weight-bold" (click)="signin()" *ngIf="!setting.isLoggedIn">sign in</a>
+                    <!--<a class="signin font-weight-bold" (click)="showPaymentModal()" *ngIf="setting.isLoggedIn">{{setting.loginInfo.left_mins}} mins left</a>-->
+
+                    <button type="button" class="btn btn-dark dropdown-toggle mins-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="setting.isLoggedIn">
+                        Minutes left: {{setting.loginInfo.left_mins}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item btn-success mb-1" (click)="showPaymentModal()">BUY MINUTES</button>
+                        <button class="dropdown-item btn-success" *ngIf="setting.getUserSetting('gender') == 'female'" (click)="getPaid()">Get paid</button>
+                    </div>
+                    <a class="signin font-weight-bold" (click)="signout()" *ngIf="setting.isLoggedIn">sign out</a>
+                    <img class="avatar" *ngIf="!setting.isLoggedIn" [src]="setting.photo != ''? setting.photo : 'assets/images/profile.jpg'">
+                    <img class="avatar" *ngIf="setting.isLoggedIn" [src]="setting.loginInfo.photo ? setting.loginInfo.photo : 'assets/images/profile.jpg'">
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper" fxFlex>
+            <page-video-chat [ngClass]="{show: page === 'videochat'}" (loginEvent)="signin()" fxFlexFill></page-video-chat>
+            <page-message [ngClass]="{show: page === 'message'}" fxFlexFill></page-message>
+        </div>
+    </div>
+</div>

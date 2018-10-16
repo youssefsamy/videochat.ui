@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <div class="tab" *ngIf="step == 1">
+        <!--<i class="fa fa-close close-btn" (click)="close()"></i>-->
+
+        <div class="row">
+            <div class="col-6" [ngClass]="{'active': state == 'signin'}" (click)="state = 'signin'">
+                <a>Sign in</a>
+            </div>
+            <div class="col-6" [ngClass]="{'active': state == 'signup'}" (click)="state = 'signup'">
+                <a>Registration</a>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper" *ngIf="step == 1">
+        <div class="signin-form form" *ngIf="state == 'signin'">
+            <form [formGroup]="loginForm">
+                <label class="title">Sign in with email</label>
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(loginForm, 'email')">
+                    <input placeholder="enter your email" name="loginemail" [(ngModel)]="loginInfo.email" formControlName="email">
+                </div>
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(loginForm, 'password')">
+                    <input placeholder="enter your password" name="loginpassword" [(ngModel)]="loginInfo.password" formControlName="password" type="password">
+                    <!--<a class="forgot-password"><u>Forgot your password?</u></a>-->
+                </div>
+                <div class="item-wrapper">
+                    <button class="submit-btn" (click)="login()">Sign in</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="signup-form form" *ngIf="state == 'signup'">
+            <form [formGroup]="signupForm">
+                <label class="title">Sign up with email</label>
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(signupForm, 'email')">
+                    <input type="email" placeholder="enter your email" name="signupemail" [(ngModel)]="signupInfo.email" formControlName="email">
+                </div>
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(signupForm, 'password')">
+                    <input type="password" placeholder="create a password" name="signuppassword" [(ngModel)]="signupInfo.password" formControlName="password">
+                </div>
+                <div class="item-wrapper">
+                    <button class="submit-btn" (click)="register()">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <!--<div class="or-use">-->
+            <!--<span>or use</span>-->
+        <!--</div>-->
+        <!--<div class="row social">-->
+            <!--<div class="col-6">-->
+                <!--<button (click)="loginWithGoogle()"><img src="assets/images/google.png"></button>-->
+            <!--</div>-->
+            <!--<div class="col-6">-->
+                <!--<button (click)="loginWithFacebook()"><img src="assets/images/facebook.png"></button>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="content-wrapper1" *ngIf="step == 2">
+        <div class="signin-form form">
+            <form [formGroup]="fullInfoForm">
+                <label class="title">Introduce yourself</label>
+                <div class="item-wrapper" [ngClass]="validate.displayFieldCss(fullInfoForm, 'name')">
+                    <input placeholder="add your name" name="name" [(ngModel)]="fullInfo.name" type="text" formControlName="name">
+                </div>
+                <div class="item-wrapper"  [ngClass]="validate.displayFieldCss(fullInfoForm, 'age')">
+                    <select placeholder="choose your age" name="age" [(ngModel)]="fullInfo.age" formControlName="age">
+                        <option selected="selected" value="">Select Your Age</option>
+                        <option value="18to24">from 18 to 24
+                        </option>
+                        <option value="25to34">from 25 to 34
+                        </option>
+                        <option value="35to44">from 35 to 44
+                        </option>
+                        <option value="44to">over 44
+                        </option>
+                    </select>
+                </div>
+                <div class="item-wrapper"  [ngClass]="validate.displayFieldCss(fullInfoForm, 'gender')">
+                    <select placeholder="choose your gender" name="gender" [(ngModel)]="fullInfo.gender" formControlName="gender">
+                        <option selected="selected" value="">Select Your Gender</option>
+                        <option value="male">male
+                        </option>
+                        <option value="female">female
+                        </option>
+                    </select>
+                </div>
+                <div class="item-wrapper">
+                    <button class="submit-btn" (click)="registerFullInfo()">Submit</button>
+                </div>
+            </form>
+            <label>By continuing, you confirm that you have read and agree to our <a
+                    [href]="setting.serverUrl + '/agreement'" target="_blank">Terms and Conditions </a>and <a
+                    [href]="setting.serverUrl + '/policy'" target="_blank">Privacy Policy</a></label>
+
+        </div>
+    </div>
+
+</div>

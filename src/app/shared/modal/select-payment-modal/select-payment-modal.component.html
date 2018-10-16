@@ -1,0 +1,15 @@
+<div id="select-payment-modal">
+    <div  class="wrapper">
+        <div class="title">
+            <h3>Select payment method</h3>
+            <i class="fa fa-close close-btn" (click)="close()"></i>
+        </div>
+
+        <div class="content">
+            <div class="item" *ngFor="let item of setting.paymentOptions; let i = index" [ngClass]="{selected: item.name == setting.selectedPayment.name}" (click)="selectItem(i)">
+                <img [src]="'assets/images/' + item.name + '.png'">
+                <label>{{item.description}}</label>
+            </div>
+        </div>
+    </div>
+</div>

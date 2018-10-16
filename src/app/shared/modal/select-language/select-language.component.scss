@@ -1,0 +1,28 @@
+#select-language-modal {
+    position: relative;
+    padding-top: 10px;
+
+    .close-btn {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: lightslategray;
+    }
+
+    .wrapper {
+
+        .auto-translate {
+            border-bottom: 0.5px solid lightgray;
+        }
+
+        .select-wrapper {
+            select {
+                width: 100%;
+                border: 1px solid #e1e3e6;
+                font-size: 18px;
+                padding-left: 10px;
+                height: 40px;
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+#payment-modal {
+    .wrapper {
+        background-color: #274069;
+        color: white;
+        text-align: center;
+
+        .title {
+            background-color: #1f2E49;
+            padding: 15px;
+            position: relative;
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                cursor: pointer;
+            }
+        }
+
+        .content {
+            padding: 20px 40px;
+
+            .col-3 {
+                padding-left: 7px;
+                padding-right: 7px;
+            }
+
+            .item {
+                border-radius: 3px;
+                padding: 2px;
+
+                &.first {
+                    background-color: #bb46ff;
+                }
+                &.second {
+                    background-color: #f84f7f;
+                }
+                &.third {
+                    background-color: #00a3ff;
+                }
+                &.fourth {
+                    background-color: #919eb2;
+                }
+
+                .item-title {
+                    label {
+                        font-size: 14px;
+                    }
+                }
+
+                .item-content {
+                    background-color: #1d2e4a;
+                    border-radius: 3px;
+                    padding-top: 12px;
+
+                    p {
+                        font-size: 14px;
+                    }
+
+                    button {
+                        display: block;
+                        width: 70%;
+                        margin: auto;
+                        font-size: 14px;
+                    }
+                    
+                    label {
+                        color: #586f98;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .payment-method {
+                margin-top: 20px;
+                background-color: #1d2e4a;
+                
+                p {
+                    color: #8b98ad;
+                    span {
+                        color: #00a3ff;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

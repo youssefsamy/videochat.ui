@@ -1,0 +1,97 @@
+#get-paid-modal {
+    .wrapper {
+        .title {
+            padding: 15px 15px 5px 15px;
+            position: relative;
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                cursor: pointer;
+            }
+        }
+
+        //.options {
+        //    padding: 5px 20px 10px 20px;
+        //
+        //    .item {
+        //        font-size: 22px;
+        //        cursor: pointer;
+        //        padding: 5px 0px;
+        //
+        //        &:not(:first-child) {
+        //            border-top: 1px solid grey;
+        //        }
+        //        &.selected {
+        //            color: #009fff;
+        //        }
+        //
+        //        &:hover {
+        //            color: #009fff;
+        //        }
+        //
+        //        label {
+        //            cursor: pointer;
+        //        }
+        //
+        //        img {
+        //            width: 40px;
+        //            margin-right: 10px;
+        //        }
+        //    }
+        //}
+
+        .email-wrapper {
+            padding: 0px 15px;
+
+            form {
+                .title {
+                    font-size: 20px;
+                }
+
+                .item-wrapper {
+                    margin-bottom: 15px;
+                    position: relative;
+
+                    &.has-error {
+                        .error {
+                            display: inline-block;
+                            color: red;
+                        }
+
+                        input {
+                            border: 1px solid red;
+                        }
+                    }
+
+                    .error {
+                        display: none;
+                    }
+
+                    input {
+                        width: 100%;
+                        border: 1px solid #e1e3e6;
+                        font-size: 20px;
+                        line-height: 50px;
+                        padding-left: 10px;
+
+                        &:focus {
+                            border: 1px solid #009fff;
+                            outline-style: none;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .form {
+            padding: 25px;
+
+            .total {
+                font-size: 22px;
+            }
+        }
+    }
+}

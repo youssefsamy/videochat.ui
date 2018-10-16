@@ -1,0 +1,16 @@
+<div class="wrapper" fxFlex fxLayoutAlign="center center" fxLayout="column">
+
+    <div class="title">
+        <label>You are...</label>
+    </div>
+    <div class="gender-wrapper" fxLayout="row">
+        <div class="male" (click)="setGender('male')">
+            <div class="picture"></div>
+            <div class="name">Male</div>
+        </div>
+        <div class="female" (click)="setGender('female')">
+            <div class="picture"></div>
+            <div class="name">Female</div>
+        </div>
+    </div>
+</div>
